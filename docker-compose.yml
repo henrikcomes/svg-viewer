@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  svg-viewer.app:
+    image: ${DOCKER_REGISTRY}/svg-viewer.app
+    build:
+      context: .
+      dockerfile: svg-viewer.frontend.app/Dockerfile

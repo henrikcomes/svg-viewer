@@ -1,0 +1,182 @@
+.content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
+  margin: 1em;
+
+  display: flex;
+  flex-direction: column;
+
+  .action-bar {
+    flex: 0 0 auto;
+    margin-bottom: 1em;
+    padding: 1em;
+
+    border: 1px solid black;
+    border-radius: 10px;
+    background: white;
+
+    display: flex;
+    flex-direction: row;
+
+    .title {
+      margin: 0;
+    }
+
+    .file-select {
+      background: #1b45a9;
+      color: white;
+      border: 1px solid black;
+      border-radius: 5px;
+      outline: none;
+      padding: 0.5em 1em;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .svg-viewer {
+    display: flex;
+    flex-direction: row;
+    flex: 1 0 0;
+    overflow: hidden;
+
+    .svg-list {
+      overflow: auto;
+      flex: 0 1 30%;
+      margin-right: 0.5em;
+
+      border: 1px solid black;
+      border-radius: 10px;
+      background: white;
+
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      align-content: flex-start;
+
+      .empty-state {
+        padding: 0.5em;
+        margin: 1em;
+        align-self: flex-start;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .svg-tile {
+        overflow: hidden;
+        flex: 0 0 calc(25% - 1em);
+        aspect-ratio: 1 / 1;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        margin: 0.5em;
+        padding: 0.5em;
+
+        @media only screen and (min-width: 2000px) {
+          flex: 0 0 calc((100% / 7) - 1em);
+        }
+
+        @media only screen and (max-width: 2000px) {
+          flex: 0 0 calc(20% - 1em);
+        }
+
+        @media only screen and (max-width: 1500px) {
+          flex: 0 0 calc(25% - 1em);
+        }
+
+        @media only screen and (max-width: 1200px) {
+          flex: 0 0 calc(50% - 1em);
+        }
+
+        @media only screen and (max-width: 700px) {
+          flex: 0 0 calc(100% - 1em);
+        }
+
+        &:hover {
+          cursor: pointer;
+          background: rgba(0, 0, 0, 0.1);
+        }
+
+        &.selected {
+          background: rgba(0, 0, 0, 0.25);
+        }
+
+        .svg {
+          flex: 1 1 0;
+          text-align: center;
+          overflow: hidden;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        .name {
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          text-align: center;
+
+          flex: 0 0 auto;
+          width: 100%;
+          margin: 0.5em 0 0 0;
+        }
+      }
+    }
+
+    .selected-svg-viewer {
+      flex: 1 1 70%;
+      margin-left: 0.5em;
+
+      border: 1px solid black;
+      border-radius: 10px;
+      background: white;
+
+      display: flex;
+      flex-direction: column;
+
+      .empty-state {
+        padding: 0.5em;
+        margin: 1em;
+        align-self: flex-start;
+        width: 100%;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      .selected-svg {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1em;
+        flex: 1;
+
+        .svg {
+          flex: 1 1 0;
+
+          svg {
+            height: 100%;
+            width: 100%;
+          }
+        }
+
+        .name {
+          flex: 0 0 auto;
+        }
+      }
+    }
+  }
+}

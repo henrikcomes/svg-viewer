@@ -1,0 +1,51 @@
+<div class="content">
+  <div class="action-bar">
+    <h2 class="title">SVG Viewer</h2>
+
+    <span class="flex-spacer"></span>
+
+    <button class="file-select" (click)="fileInput.click()">
+      Select Files
+    </button>
+
+    <input
+      #fileInput
+      type="file"
+      multiple
+      (change)="processFiles($event)"
+      accept="image/svg+xml"
+      hidden
+    />
+  </div>
+
+  <div class="svg-viewer">
+    <div class="svg-list">
+      <h3 class="empty-state" *ngIf="!svgs?.length">No items</h3>
+
+      <div
+        class="svg-tile"
+        [ngClass]="{ selected: selected === svg }"
+        *ngFor="let svg of svgs"
+        (click)="view(svg)"
+      >
+        <span class="svg" [innerHtml]="svg.sanitizedValue"></span>
+
+        <h5 class="name" [title]="svg.name">
+          {{ svg.name }}
+        </h5>
+      </div>
+    </div>
+
+    <div class="selected-svg-viewer">
+      <h3 class="empty-state" *ngIf="!selected">There is no svg selected</h3>
+
+      <div *ngIf="selected" class="selected-svg">
+        <span class="svg" [innerHtml]="selected.sanitizedValue"></span>
+
+        <h3 class="name" [title]="selected?.name">
+          {{ selected?.name }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>
